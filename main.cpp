@@ -3,8 +3,12 @@
 
 using namespace std;
 
+#define TEST_CASE_1 0
+#define TEST_CASE_2 1
+
 int main()
 {
+
     tree_node *node_A = new tree_node("A"); 
     tree_node *node_B = new tree_node("B"); 
     tree_node *node_C = new tree_node("C"); 
@@ -24,8 +28,19 @@ int main()
     node_C->left_child = node_F; 
     node_F->right_child = node_I;
 
+    node_B->parent = node_A;
+    node_C->parent = node_A;
+    node_D->parent = node_B;
+    node_E->parent = node_B;
+    node_F->parent = node_C;
+    node_G->parent = node_E;
+    node_H->parent = node_E;
+    node_I->parent = node_F;
+
+
     binary_tree tree(node_A);
 
+#if TEST_CASE_1
     cout << "Pre-Order:" << endl;
     tree.pre_order(node_A);
     cout << endl;
@@ -41,7 +56,21 @@ int main()
     cout <<  "Level-Order:" << endl;
     tree.level_order();
     cout << endl;
-    
+
+#endif
+
+#if TEST_CASE_2
+
+    cout <<  "In-Order by parent:" << endl;
+    tree.in_order_by_parent(node_A);
+    cout << endl;
+
+    cout <<  "In-Order reverse:" << endl;
+    tree.in_order_reverse(node_A);
+    cout << endl;
+
+#endif
+
     return 0;
 
 }

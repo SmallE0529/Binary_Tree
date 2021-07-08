@@ -54,6 +54,16 @@ class binary_tree
     void in_order(tree_node *current);
     void post_order(tree_node *current);
     void level_order();
+
+    tree_node *left_most(tree_node *current);
+    tree_node *right_most(tree_node *current);
+
+    tree_node *in_order_successor(tree_node *current);
+    tree_node *in_order_predecessor(tree_node *current);
+
+    void in_order_by_parent(tree_node *root);
+    void in_order_reverse(tree_node *root);
+    
 };
 
 #endif
